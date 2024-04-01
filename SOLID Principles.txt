@@ -1,0 +1,34 @@
+Low Level Design
+
+Pre requisite - OOPs Concept
+
+S.O.L.I.D Principles of OOPS
+
+S- Single Responsibility Principle = Each class should have only one reason to change .eg of Marker caluclation class, print invoice class InvoiceDao(Data access object) , and add data to DB. Change in one function specified above will not affect the other classes therefore eassy to maintain & easy to understand.
+
+
+O- Open/Closed Principle = Open for Extension but closed for modification.An already Tested and Live class can be extended but is closed for modification. eg InvoiceDao Save invoice to Dao but saveToFile function cannot be added because the class is tested and live therefore no further modification.
+
+Create INTERFACE of InvoiceDao class. void save() two classes one saves for DB & the other for File.
+ 
+
+L- Liskov Substitution Principle = If class B is a subtype of class A then object A should be replaced by Object B without breaking the behaviour of the program.( Subclass should be able to extend the capability of the parent class and not narrow it down.)
+
+
+I- Interface Segmented Principle = Interrface should be such that it does not implement unneccessary functions (break interface into small parts) Interface should not have unneccessary functions that have to be implemented. 
+
+eg washing utensils function , cook food function not done by the waiter. Solution create two interface 1. Waiterinterface that has func serveCustomer() & takeOrder() 2 ChefInterface that has func cookFood() & decideMenu().
+
+
+D- Dependency Inversion Principle =  classes should depend on Interface rather than concrete classes
+
+
+Advantages of SOLID Principle :
+
+1. Easy to Maintain
+2. Easy to undersatnd
+3. Reduce Complexity
+4. Flexible Software
+5. Avoid duplicate COde
+
+
