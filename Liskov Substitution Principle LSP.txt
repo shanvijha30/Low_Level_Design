@@ -1,0 +1,126 @@
+Liskov Substitution Problem
+
+All the child classes should be able to substituteeach other without breaking the code.
+
+Problem?
+
+CODE
+
+
+public class Vehicle{
+
+public Integer getNumberOfWheels(){
+return 2;
+}
+
+public Boolean hasEngine(){
+return true;
+}
+
+public class Motorcycle extends Vehicle{
+}
+
+public class Car extends Vehicle{
+
+@Override
+public Integer getNumberOfWheels(){
+return 4;
+}
+
+public class Bicycle extends Vehicle{
+
+public Boolean hasEngine(){
+return null;
+}
+
+public class Main{
+
+public static void main(String args[]){
+
+
+List<Vehicle> vechileList=new ArrayList<>();
+vechileList.add(new Motorcycle());
+vechileList.add(new Car());
+vechileList.add(new Bicycle());  PROBLEM ARISES OVER HERE BECAUSE IT OUTPUTS NULL POINTER EXPECTION AND BREAKS THE CODE
+
+ for (Vechile vehicle:vehicleList){
+System.out.println(vehicle.hasEngine().toString());
+}
+}
+}
+
+
+SOLUTION
+
+
+PUT ONLY GENRIC FUNCTIONS THAT ARE COMMON TO ALL THE CLASSES
+public class Vehicle{
+
+public Integer getNumberOfWheels(){
+return 2;
+}
+}
+
+
+public class EngineVehicle extends Vehicle{
+public boolean hasEngine(){
+return true;
+}
+
+
+public class Car extends EngineVehicle{
+}
+
+public class Motorcycle extends EngineVehicle{
+}
+
+public class Bicycle exgtends Vehicle{  ONLY GENERIC METHOD IS THERE & NO ENGINE FUCTION IS THERE SO NO PROBLEM
+}
+
+public class Main{
+
+public static void main(String args[]){
+
+
+List<Vehicle> vechileList=new ArrayList<>();
+vechileList.add(new Motorcycle());
+vechileList.add(new Car());
+vechileList.add(new Bicycle());  NOW THIS CODE WILL NOT BREAK BEACUSE OF ANY EXCEPTION
+
+ for (Vechile vehicle:vehicleList){
+System.out.println(vehicle.getNumberOfWheels.toString());
+}
+}
+}
+
+
+public class Main{
+
+public static void main(String args[]){
+
+
+List<Vehicle> vechileList=new ArrayList<>();
+vechileList.add(new Motorcycle());
+vechileList.add(new Car());
+vechileList.add(new Bicycle());  
+for (Vechile vehicle:vehicleList){
+System.out.println(vehicle.hasEngine());  COMPILE TIME ERROR BECAUSE ENGINEVEHICLE DOES NOT HAVE HASENGINE() CODE WILL NOT BREAK
+}
+}
+}
+
+
+public class Main{
+
+public static void main(String args[]){
+
+
+List<EngineVehicle> vechileList=new ArrayList<>();
+vechileList.add(new Motorcycle());
+vechileList.add(new Car());
+vechileList.add(new Bicycle());  
+for (Vechile vehicle:vehicleList){
+System.out.println(vehicle.hasEngine());  
+}
+}
+}
